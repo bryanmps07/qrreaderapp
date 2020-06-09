@@ -13,11 +13,11 @@ class MapaPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Coordenadas QR'),
-        actions: <Widget>[
+        actions: <Widget>[ 
           IconButton(
-            icon: Icon( Icons.my_location),
+            icon: Icon( Icons.my_location), 
             onPressed: (){}
-          )
+          ) 
         ],
       ),
       //body: _crearFlutterMap(scan),
