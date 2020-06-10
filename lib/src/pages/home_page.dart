@@ -52,23 +52,20 @@ class _HomePageState extends State<HomePage> {
     // https://www.youtube.com/
     // geo:40.754408249552085,-73.87410536250003
     
-    dynamic futureString = 'https://www.youtube.com/';
+    dynamic futureString;
 
-    // try {
-    //    futureString = await BarcodeScanner.scan();
-    // } catch ( e ){
-    //   futureString = e.toString();
-    // }
+    try {
+      futureString = await BarcodeScanner.scan();
+    }catch(e){
+      futureString=e.toString();
+    }
 
    // print('Future String: ${futureString.rawContent}');
     
     if( futureString != null){
       
-      final scan = ScanModel( valor: futureString );
+      final scan = ScanModel( valor: futureString.rawContent );
       scansBloc.agregarScan(scan);
-
-      final scan2 = ScanModel( valor: 'geo:40.754408249552085,-73.87410536250003' );
-      scansBloc.agregarScan(scan2);
 
       if ( Platform.isIOS ) {
         Future.delayed( Duration(milliseconds: 750), (){
@@ -88,7 +85,7 @@ class _HomePageState extends State<HomePage> {
 
     switch ( paginaActual ) {
       case 0: return MapasPages();
-      case 1: return DireccionesPage();
+      case 1: return DireccionesPages();
 
       default:
       return MapasPages();
